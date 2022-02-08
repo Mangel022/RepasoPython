@@ -10,13 +10,7 @@ lista[0] = dato1
 dato2 = input("\nIngrese un dato para sustituir el segundo dato: ")
 lista[1] = dato2
 
-if dato1[0] in "abcdefghijklmnopkrstuvwxyz":
-dato2[0] in "abcdefghijklmnopkrstuvwxyz":
-    print("Estos son los datos actualizados de la lista: ",lista)
-else:
-    lista[0] = int(dato1)
-    lista[1] = int(dato2)
-    print("Estos son los datos actualizados de la lista: ",lista)
+print(lista)
 
 
 
