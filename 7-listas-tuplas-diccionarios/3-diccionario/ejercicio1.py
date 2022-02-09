@@ -4,6 +4,8 @@
 
 paises = {"Guatemala": "Ciudad de Guatemala", "El Salvador": "San Salvador", "Honduras": "Honduras","Nicaragua": "Managua", "Costa Rica": "San Jose", "Panama": "Panama", "Argentina": "Buenos Aires", "Colombia": "Bogota", "Venezuela": "Caracas", "España": "Madrid"}
 
+paises.setdefault("EL Salvador", "San Salvador")
+
 nombrePais = input("introduzca el nombre de un pais: ").title()
 
 if nombrePais in paises:
