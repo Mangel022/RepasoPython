@@ -6,4 +6,4 @@ print(75 / 9) #division (decimal)
 print(2 ** 3) #exponente 2 * 2 * 2
 print(75 // 9) #division entera (sin decimales)
 
-print(100 % 100) #modulo (el residuo)
+print(1 % 2) #modulo (el residuo)
