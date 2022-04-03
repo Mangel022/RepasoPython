@@ -21,7 +21,20 @@ class Toninos:
     def mostrar(self):
         print("Lista de pedidos")
         print("Id".rjust(20),"Nombre Encargado")
-        for i in zip(len(self._pedidos)):
+        for i in range(len(self._pedidos)):
             print(f"{self._pedidos[i]['id']}".rjust(25),f"{self._pedidos[i]['nombre']}")
-    #editar
+
+    #editar informacion
+    def infeditar(self):
+        serch = int(input("Introduzca la ID del pedido: "))
+        for i in range(len(self._pedidos)):
+            if serch == self._pedidos[i]['id']:
+                print("Pedido ", self._pedidos[i]['id'])
+                print("Nombre ", self._pedidos[i]['nombre'])
+                print("Tipo pizza ", self._pedidos[i]['tipo pizza'])
+                print("Tamaño ", self._pedidos[i]['tamaño'])
+                print("Costo", self._pedidos[i]['costo'])
+                return x
+
+    
     #eliminar
