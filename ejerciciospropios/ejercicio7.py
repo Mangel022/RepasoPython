@@ -6,7 +6,7 @@ class Toninos:
         self._pedidos = []
 
 
-    #agregar
+    #agregar pedidos
     def agregar(self):
         print("Agregar pedidos".center(50,"*"))
         pedido = int(input("Introduzca el numero del pedido: "))
@@ -20,21 +20,82 @@ class Toninos:
     #mostrar
     def mostrar(self):
         print("Lista de pedidos")
-        print("Id".rjust(20),"Nombre Encargado")
+        print("Id".ljust(20),"Nombre Encargado")
         for i in range(len(self._pedidos)):
-            print(f"{self._pedidos[i]['id']}".rjust(25),f"{self._pedidos[i]['nombre']}")
+            print(f"{self._pedidos[i]['id']}".ljust(25),f"{self._pedidos[i]['nombre']}")
+        print("\nDesea ver la informacion de algun pedido?")
+        print("""
+        1.Si
+        2.No
+        """)
+        opcion = int(input("> "))
+        if opcion == 1:
+            self.infeditar()
+        elif opcion == 2:
+            pass
+
 
     #editar informacion
     def infeditar(self):
         serch = int(input("Introduzca la ID del pedido: "))
         for i in range(len(self._pedidos)):
             if serch == self._pedidos[i]['id']:
-                print("Pedido ", self._pedidos[i]['id'])
-                print("Nombre ", self._pedidos[i]['nombre'])
-                print("Tipo pizza ", self._pedidos[i]['tipo pizza'])
-                print("Tamaño ", self._pedidos[i]['tamaño'])
-                print("Costo", self._pedidos[i]['costo'])
-                return x
+                print("Pedido: ", self._pedidos[i]['id'])
+                print("Nombre: ", self._pedidos[i]['nombre'])
+                print("Tipo pizza: ", self._pedidos[i]['tipo pizza'])
+                print("Tamaño: ", self._pedidos[i]['tamaño'])
+                print("Costo: ", self._pedidos[i]['costo'])
+                return i
 
-    
+    def editar(self):
+        print("Edita pedido")
+        data = self.infeditar()
+        condicion = False
+        while condicion == False:
+            print("""
+            Menu Editar
+
+            1.Nombre Encargado
+            2.Tipo de Pizza
+            3.Tamaño
+            4.Costo
+            5.Salir
+            """)
+            opcion = int(input("> "))
+
+            if opcion == 1:
+                nombre = input("Introduzca el nombre de la persona encargada: ")
+                self._pedidos[data]['nombre'] = nombre
+            elif opcion == 2:
+                tipopizz = input("Introduzca el nombre de la pizza: ")
+                self._pedidos[data]['tipo pizza'] = tipopizz
+            elif opcion == 3:
+                tamaño = input("Introduzca el tamaño de la pizza: ")
+                self._pedidos[data]['tamaño'] = tamaño
+            elif opcion == 4:
+                costo = int(input("Introduzca el costo de la pizza: "))
+                self._pedidos[data]['costo'] = costo
+            elif opcion == 5:
+                break
+
+
     #eliminar
+    def eliminar(self):
+        print("Eliminar pedido")
+        serch = int(input("Introduzca la ID del pedido: "))
+        for i in range(len(self._pedidos)):
+            if serch == self._pedidos[i]['id']:
+                serch =- 1
+                self._pedidos.remove(self._pedidos[serch])
+                print("Pedido Eliminado...")
+                self.mostrar()
+            else:
+                print("El id del pedido digitado no se encuentra en la base de datos")
+
+
+#objeto constructor
+toninos = Toninos()
+toninos.agregar()
+toninos.mostrar()
+toninos.editar()
+toninos.mostrar()
