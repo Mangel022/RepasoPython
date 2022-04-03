@@ -5,6 +5,37 @@ class Empresas:
     def __init__(self):
         self._registro = []
 
+    #MENU de la aplicacion
+    def menu(self):
+        print("Bienvenidos a nuestra aplicacion de datos".center(50))
+        print("-".rjust(50))
+        print("""
+        Menu
+
+    1.Agregar Informacion de Empresas
+    2.Mostrar Listado de Empresas
+    3.Editar Informacion de una Empresa
+    4.Eliminar Empresa
+    5.Salir de la aplicacion
+    """)
+        option = int(input("> "))
+
+        if option == 1:
+            self.agregar()
+        elif option == 2:
+            self.mostrar()
+        elif option == 3:
+            self.editar()
+        elif option == 4:
+            self.eliminar()
+        elif option == 5:
+            print("Saliendo del programa...")
+            exit()
+
+        #luego que se realice la accion regresar automaticamente al menu
+        self.menu()
+
+    #Agregar empresas
     def agregar(self):
         print("-".center(50,"-"))
         print("Agregar Empresa".rjust(25," "))
@@ -17,6 +48,7 @@ class Empresas:
         telefono = int(input("Introduzca el telefono: "))
         self._registro.append({'id':id,'nombre':nombre,'nit':nit,'direccion':dirr,'email':email,'tel':telefono})
 
+    #mostrar las empresas en listas
     def mostrar(self):
         print("-".center(50,"-"))
         print("Lista de las Empresas".rjust(25," "))
@@ -24,17 +56,18 @@ class Empresas:
         print("\n")
         print("ID".ljust(20),"Nombre de la Empresa")
         for x in range(len(self._registro)):
-            print(f"{ self._registro[x]['id']}".ljust(30),f"{self._registro[x]['nombre']}")
+            print(f"{ self._registro[x]['id']}".ljust(20),f"{self._registro[x]['nombre']}")
         condicion = False
         while condicion == False:
             print("\nDesea ver la informacion de una empresa?\n1.Si\n2.No")
             opcion = int(input("> "))
             if opcion == 1:
                 self.info()
-                break
+                self.menu()
             else:
-                break
+                self.menu()
 
+    #mostrar informacion de una empresa
     def info(self):
         print("-".center(50,"-"))
         print("Informacion de la empresa".rjust(25," "))
@@ -49,6 +82,7 @@ class Empresas:
                 print("Email: ",self._registro[x]['email'])
                 print("Telefono: ",self._registro[x]['tel'])
 
+    #editar informacion de una empresa (bloque de ayuda principal)1
     def editar(self):
         print("-".center(50,"-"))
         print("Editar empresa".rjust(25," "))
@@ -86,6 +120,7 @@ Menu Editar informacion de la empresa
                 print("Regresando al menu...")
                 condicion = True
 
+    #editar informacion de una empresa (bloque de ayuda) 2
     def editarsec(self):
         serch = int(input("Introduzca la id: "))
         for x in range(len(self._registro)):
@@ -98,6 +133,7 @@ Menu Editar informacion de la empresa
                 print("Telefono: ",self._registro[x]['tel'])
                 return x
 
+    #eliminar empresa
     def eliminar(self):
         print("-".center(50,"-"))
         print("Eliminar Empresa".rjust(25," "))
@@ -112,5 +148,4 @@ Menu Editar informacion de la empresa
 
 
 empresas = Empresas()
-empresas.agregar()
-empresas.eliminar()
+empresas.menu()
