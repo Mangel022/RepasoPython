@@ -5,6 +5,33 @@ class Toninos:
     def __init__(self):
         self._pedidos = []
 
+    #menu
+    def menu(self):
+        print("Bienvenido")
+        print("Menu".center(20,"-"))
+        print("""
+        1.Agregar Pedidos
+        2.Lista de Pedidos
+        3.Editar Pedidos
+        4.Eliminar Pedidos
+        5.Salir del programa""")
+
+        opcion = int(input("> "))
+        if opcion == 1:
+            self.agregar()
+        elif opcion == 2:
+            self.mostrar()
+        elif opcion == 3:
+            self.editar()
+        elif opcion == 4:
+            self.eliminar()
+        elif opcion == 5:
+            print("Saliendo del programa...")
+            exit()
+
+        #regresar al menu cada que termine una accion
+        self.menu()
+
 
     #agregar pedidos
     def agregar(self):
@@ -85,17 +112,12 @@ class Toninos:
         serch = int(input("Introduzca la ID del pedido: "))
         for i in range(len(self._pedidos)):
             if serch == self._pedidos[i]['id']:
-                serch =- 1
+                serch -= 1
                 self._pedidos.remove(self._pedidos[serch])
                 print("Pedido Eliminado...")
                 self.mostrar()
-            else:
-                print("El id del pedido digitado no se encuentra en la base de datos")
 
 
 #objeto constructor
 toninos = Toninos()
-toninos.agregar()
-toninos.mostrar()
-toninos.editar()
-toninos.mostrar()
+toninos.menu()
