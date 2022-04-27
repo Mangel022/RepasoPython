@@ -8,6 +8,7 @@
 class Cliente:
     def __init__(self):
         self._clientes = {}
+        self._operarios = {}
 
     def login(self):
         print("Login clientes")
@@ -68,9 +69,11 @@ class Cliente:
     def deposito(self):
         print("Bienvenido al deposito {}".format(self.nombrecli))
         cantidad = int(input("Cuanto dinero desea depositar? "))
+        condicion = False
         for key in self._clientes:
             if self.nombrecli == key:
                 self._clientes[key] += cantidad
+
 
     def extraer(self):
         print("Bienvenido al deposito {}".format(self.nombrecli))
@@ -85,9 +88,9 @@ class Cliente:
             if self.nombrecli == key:
                 print('{} su saldo es: {}'.format(self.nombrecli, self._clientes[key]))
 
-#CLASE BANCO
+#CLASE BANCO por terminar
 class Banco(Cliente):
-    def __init__(self):
+    def operarios(self):
         pass
 
 #objeto constructor
