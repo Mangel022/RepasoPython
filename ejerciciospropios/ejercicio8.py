@@ -8,9 +8,9 @@
 class Banco:
     def operaciones(self):
         print("Operaciones realizadas por todos los clientes:\n")
-        print("Usuario".ljust(20),"Depositos Totales".ljust(20),"Retiros totales")
+        print("Id".ljust(20),"Usuario".ljust(20),"Depositos Totales".ljust(20),"Retiros totales")
         for key in self._operaciones:
-            print(f"{self._operaciones[key][0]}".ljust(20),f"{self._operaciones[key][1]}".ljust(20),f"{self._operaciones[key][2]}")
+            print(f"{key}".ljust(20),f"{self._operaciones[key][0]}".ljust(20),f"{self._operaciones[key][1]}".ljust(20),f"{self._operaciones[key][2]}")
 
 #CLASE CLIENTE
 class Cliente(Banco):
@@ -26,6 +26,7 @@ class Cliente(Banco):
         nombre = input("Ingrese su nombre: ")
         cantidad = int(input("Ingrese la cantidad de dinero: "))
         self._clientes.setdefault(nombre, cantidad)
+        print(self._index)
         self._operaciones = {self._index:[nombre, cantidad, 0]}
 
         self.comprobacion()
@@ -45,22 +46,21 @@ class Cliente(Banco):
                     if opcion == 1:
                         self.menu()
                         return self.nombrecli
-                        return self._index
+
                     else:
                         print("\nCerrando sesion...")
-                        self.login()
-                        return self._index
-                        self._index += 1
+                        #self.login()
+                        self.comprobacion()
+
 
                 else:
                     print("No se encuentra en la base de datos...")
                     self.login()
-                    return self._index
-                    self._index += 1
 
             elif opcion == 2:
                 print("Ingresando al registro de cliente")
                 self.login()
+
             elif opcion == 3:
                 print("Saliendo del programa...")
                 self.operaciones()
